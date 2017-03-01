@@ -1,0 +1,9 @@
+<link rel="stylesheet" ng-href="{{content.css[0]}}">
+<div class="show" $sanitize>
+	<!-- <h2>{{content.title}}</h2> -->
+	<div class="navver" ng-repeat="v in data['data']['stories']">
+		<img src="{{content.image}}" alt="">
+	</div>
+	<p ng-bind-html="content.body"></p>
+	
+</div>

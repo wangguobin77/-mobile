@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name='referrer' content="never">
+	<title>知乎日报mobile</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/angular.js"></script>
+	<script src="js/rem.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script src="js/angular-sanitize.min.js"></script>
+	
+
+</head>
+<body >
+
+<div class="top">
+	<img src="img/1.png" alt="">
+	<div class="anniu"></div>
+	<div class="liulan">APP下载</div>
+</div>
+
+
+<!-- 标题 -->
+<div class="slide" ng-controller="head">
+	<a href="#!/">首页</a>
+	<a ng-repeat="v in data['data']['others']" href="#!/list{{v.id}}">{{v.name}}</a>
+</div>
+
+
+<div class="mask"></div>
+<!-- lunbotu -->
+<!-- <div class="banner">
+	<img src="img/2.png" alt="">
+</div>	 -->
+
+
+<div class="con">
+	<div class="wrapper">
+		<div class="aa"style="background:008BED"><img src="img/2.png" alt=""></div>
+		<div style="background:008BED"><img src="img/2.png" alt=""></div>
+		<div style="background:008BEDk"><img src="img/2.png" alt=""></div>
+		<div style="background:008BED"><img src="img/2.png" alt=""></div>
+	</div>
+	
+</div>	
+
+<!-- 轮播结束语 -->
+
+
+<!-- 内容开始 -->
+<section ng-view>
+	
+	
+</section>
+
+
+
+
+
+
+</body>
+</html>
+
+<script src="js/index.js"></script>
+
+
+
+<script>
+var slide=document.querySelector('.slide');
+var mask=document.querySelector('.mask');	
+var btn=document.querySelector('.anniu');
+
+btn.addEventListener('touchstart',function(){
+	slide.style.transform="translate3d(0,0,0)";
+	mask.style.display="block";
+
+});
+
+mask.addEventListener('touchstart',function(){
+	slide.style.transform="translate3d(-100%,0,0)";
+	mask.style.display="none";
+
+})
+
+
+// btn.addEventListener('touchstart',function(){
+// 	if(mask.style.display==none){
+// 		slide.style.transform="translate3d(0,0,0)";
+// 		mask.style.display="block";
+// 		return;
+
+// })
+
+	var cw=document.documentElement.clientWidth;
+	var wrapper=document.querySelector(".wrapper");
+	var divs=document.querySelectorAll(".wrapper div");
+	var index=0;
+	var of=0;
+	var sf=0;
+	var st=0;
+	wrapper.style.width=cw*divs.length+"px";
+	for(var i=0;i<divs.length;i++){
+		divs[i].style.width=cw+"px";
+	}
+// 自动切换
+ var t=setInterval(move,2000);
+	 function move(){
+	 	// var first=firstChild( wrapper);
+	 	// var last=wrapper.lastChild;
+	 	// wrapper.appendChild(first);
+	 	// appendBefore(wrapper,last);
+	 	// last.style.transform="translate3d(0,0,0  )";
+	 	index++;
+	 	if(index==divs.length){
+	 		index=0;
+	 	}
+	 	wrapper.style.transition="transform,1s";
+	 	wrapper.style.transform="translate3D(-"+(index*cw)+"px,0,0)"
+
+	 }
+
+// 触摸滑动
+wrapper.addEventListener("touchstart",function(e){
+	window.removeEventListener("touchend",end);
+	wrapper.style.transition="";
+	var th=e.targetTouches[0];
+	clearInterval(t);
+	sf=th.clientX;
+	st=e.timeStamp;
+});
+
+
+window.addEventListener("touchmove",function(e){
+		var th=e.targetTouches[0];
+		clearInterval(t);
+		of=th.clientX;
+		ot=e.timeStamp;
+	})
+
+wrapper.addEventListener("touchend",end);
+		function end(e){
+			t=setInterval(move,1000);
+			wrapper.style.transition="transform 1s";
+			var ch=Math.abs(e.changedTouches[0].clientX);
+			var ot=e.timeStamp;
+			var tt=ot-st;
+			var hh=ch-of;
+			if(of-sf<0){
+				if(Math.abs(of-sf)>cw/2||(tt<100&&hh>30)){
+					index++;
+					if(index==divs.length){
+						index = divs.length-1;
+					}
+					wrapper.style.transform="translate3D(-"+(index*cw)+"px,0,0)"
+				}
+			}
+
+			if(of-sf>0){
+					if(of-sf>cw/2||(tt<100&&hh>30)){
+						index--;
+						if(index==-1){
+							index = 0;
+						}
+						wrapper.style.transform="translate3D(-"+(index*cw)+"px,0,0)"
+					}
+				
+				}
+			// setTimeout((move,1000),1500)
+			console.log(hh)
+			
+		}
+// 自动切换
+
+
+</script>

@@ -1,0 +1,160 @@
+body,html,ul,li,input,h1,h2,h3,h4,h5{
+	margin:0;
+	padding:0;
+	list-style: none;
+	border:0;
+	outline: none;
+	font-family: 微软雅黑;
+}
+body{
+	box-sizing:border-box;
+	user-selecter:none;
+`}
+html{
+	height:100%;
+}
+body{
+	height: 100%;
+	background-color: #f9f9f9;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+
+.top{
+		height: 60px;
+		width: 100%;
+		background: #fff;
+		position: fixed;
+		top:0;
+		z-index:99;
+		padding-left: 10px;
+		padding-top: 8px;
+		box-sizing:border-box;
+	}
+.top .anniu{
+		width:30px;
+		height: 30px;
+		float: right;
+		background: #008BED;
+		z-index:99;
+		margin-right: 10px;
+		margin-top: 5px;
+		background:url(../img/000.png) no-repeat center center/cover;
+	}
+.top .liulan{
+	width: 80px;
+	height: 30px;
+	text-align: center;
+	background: #F0F9FF;
+	float: right;
+	line-height:30px;
+	margin-top: 5px;
+	margin-right: 20px;
+	color: #0B8FED;
+}
+.slide{
+		width: 50%;
+		height: 90%;
+		background: #222;
+		position: absolute;
+		z-index: 9999;
+		transform: translate3d(-100%,0,0);
+		transition:transform .4s;
+		padding-top: 20px;
+	}
+
+	.slide a{
+		display: block;
+		height: 40px;
+		width: 100%;
+		color:#fff;
+		text-align:center;
+		line-height: 40px;
+		border-bottom:1px solid #222;
+		box-sizing:border-box;
+		font-size: 20px;
+
+	}
+	.slide a:hover{
+		background: #000;
+	}
+.mask{
+		margin-top:-60px;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		z-index: 9998;
+		background: #eee;
+		opacity: 0.5;
+		display: none;
+		transition:transform .4s;
+
+	}
+.con{
+	margin-top: 60px;
+	overflow: hidden;
+}
+
+
+/*<!-- 内容开始 -->*/
+
+section{
+	width: 100%;
+	height:auto;
+	background: #fff;
+	padding: 0.5rem 0.5rem;
+	box-sizing:border-box;
+	display: flex;
+	flex-direction:column;
+
+}
+section .nav{
+	display: flex;
+	width: 100%;
+	height:1.82rem;
+	background: #fff;
+	border-bottom: 1px solid #F6F6F6;
+	justify-content:space-between;
+}
+section .nav a{
+	display: block;
+	width: 70%;
+	align-self:flex-start;
+	margin-top: 0.3rem;
+	font-size: 16px;
+	font-family: sans-serif;
+	color:#000;
+}
+
+section .nav img{
+	display:block;
+	/*width: 1.5rem;
+	height: 1.25rem;*/
+	background: #ddd;
+	margin-right: 0;
+	margin-top: 0.3rem;
+	width: 30%;
+}
+
+
+
+/*轮播*/
+
+
+.wrapper{
+		height: 100%;
+		transform:translate3d(0,0,0);
+		
+		
+	}
+	.wrapper>div{
+		/*width: 25%;*/
+		/*height:40%;*/
+		float:left;
+	}
